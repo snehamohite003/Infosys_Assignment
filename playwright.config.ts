@@ -11,6 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  
   // testDir: './tests-ui',
   /* Run tests in files in parallel */
   expect: {
@@ -86,4 +87,5 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
 });

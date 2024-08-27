@@ -2,6 +2,13 @@ import { test, expect, type Page } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.polestar.com/se');
+  try {
+    // Wait for the cookie pop-up to appear and click the accept button
+    await page.waitForSelector('button.Accept All Cookies', { timeout: 5000 }); // Adjust selector and timeout as needed
+    await page.click('button.Accept All Cookies');
+  } catch (e) {
+    console.log('Cookie pop-up did not appear.');
+  }
 });
    //code is to handle cookies pop-up
   // const popupPromise = page.waitForEvent('popup');

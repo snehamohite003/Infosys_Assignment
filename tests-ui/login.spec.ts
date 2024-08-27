@@ -8,6 +8,13 @@ let invaliEmail="test1"
 
 test.beforeEach(async ({ page }) => {
     await page.goto('https://www.polestar.com/se');
+    try {
+      // Wait for the cookie pop-up to appear and click the accept button
+      await page.waitForSelector('button.cookie-accept', { timeout: 5000 }); // Adjust selector and timeout as needed
+      await page.click('button.cookie-accept');
+    } catch (e) {
+      console.log('Cookie pop-up did not appear.');
+    }
     await page.locator("//button[@title='menu']").click();
     await page.locator("//a[@class='css-16ho8r3']").click();
   });
